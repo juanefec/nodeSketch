@@ -1,5 +1,5 @@
 var socket;
-
+//HOLAAA
 var s; //variable for player object
 
 var sID; //store for our client id given us by the socket.io server
