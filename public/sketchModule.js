@@ -10,12 +10,12 @@ function socketListener(){
 		}
 	});
 	socket.on('previousPlayers', (data) => {
-		for(let i = 0; i < data.length; i++){
-			if(data[i].id != sID){
-				enemysData.push({id: data[i].id, x: -150, y: -150});
-				console.log("Adding previous player, ID: "+ data[i].id);
+		data.forEach( d => {		
+			if(d.id != sID){
+				enemysData.push({id: d.id, x: -150, y: -150});
+				console.log("Adding previous player, ID: "+ d.id);
 			}
-		}
+		});
 	});
 	socket.on('player', (data) => {
 			for(let i = 0; i < enemysData.length; i++){

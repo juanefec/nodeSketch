@@ -20,7 +20,7 @@ var textTimer;
 
 function setup(){    //setup function from p5.js
 	createCanvas(1300,600);
-	socket = io.connect('http://192.168.1.9:3000');
+	socket = io.connect('http://localhost:3000');
 	socketListener();
 	username = sID;
 	s = new Snake();
