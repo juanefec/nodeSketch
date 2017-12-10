@@ -1,0 +1,16 @@
+{
+  "name": "nodesketch",
+  "version": "1.0.0",
+  "description": "node sketch",
+  "main": "serverNode.js",
+  "dependencies": {
+    "express": "4.15.4",
+    "socket.io": "2.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "juan clot",
+  "license": "ISC"
+}
