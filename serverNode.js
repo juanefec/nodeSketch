@@ -10,7 +10,7 @@ var io = socket(server);
 var ids = [];
 
 
-io.sockets.on('connection', function(socket){
+io.sockets.on('connection', (socket) => {
 	//add the id on ids array
 	ids.push({id: socket.id, user: "n", kills: 0, deaths: 0});
 	//who has connected the server
@@ -24,8 +24,8 @@ io.sockets.on('connection', function(socket){
 	//sends to all clients that a new player has connected
 	socket.broadcast.emit('NewPlayerID', socket.id);
 	//listens to players event 'player' that sends its cordenates
-	socket.on('player', function(data){
-		for(var i=0;i<ids.length;i++){
+	socket.on('player', (data) => {
+		for(let i=0;i<ids.length;i++){
 			if (socket.id == ids[i].id){
 				ids[i].user = data.user;
 			}
@@ -35,12 +35,12 @@ io.sockets.on('connection', function(socket){
 		socket.emit('killed',ids);
 	});
 	//listens to the event 'newShot' when a player shoots
-	socket.on('newShot', function(data){
+	socket.on('newShot', (data) => {
 		//sends to all clients that a shot has been fired by that player
 		socket.broadcast.emit('newShot', data);
 	});
-	socket.on('killed', function(data){
-		for(var i = 0; i < ids.length; i++){
+	socket.on('killed', (data) => {
+		for(let i = 0; i < ids.length; i++){
 				if (socket.id == ids[i].id){
 					ids[i].deaths++;
 				}
@@ -52,11 +52,11 @@ io.sockets.on('connection', function(socket){
 		socket.broadcast.emit('killed',ids);
 	});
 	//listens the disconection of a client
-	socket.on('disconnect', function(){
+	socket.on('disconnect', () => {
 		//who has left the server
 		console.log("Player disconected: "+socket.id);
 		//goes through the ids array
-		for(var i = 0; i<ids.length; i++){
+		for(let i = 0; i<ids.length; i++){
 			//checks who is the one that left the server
 			if(ids[i].id == socket.id){
 				socket.broadcast.emit('playerDisconnected', ids[i]);

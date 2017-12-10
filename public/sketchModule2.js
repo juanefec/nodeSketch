@@ -43,7 +43,7 @@ function Snake() {
     if (this.my > height-this.rad){
       this.my = height-this.rad;
     }
-    var r = map(this.life, 500,0,0,this.rad*2);
+    let r = map(this.life, 500,0,0,this.rad*2);
     fill(20,255,20);
     ellipse(this.x,this.y, this.rad*2, this.rad*2);
     fill(200,20,20,78);

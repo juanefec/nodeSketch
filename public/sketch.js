@@ -1,5 +1,5 @@
 var socket;
-//HOLAAA
+
 var s; //variable for player object
 
 var sID; //store for our client id given us by the socket.io server
@@ -8,7 +8,7 @@ var enemysData = []; //array for storing enemy data
 
 var shots = []; //array for storing shoting data
 
-var v = 6; //velocity of the player
+const v = 6; //velocity of the player
 
 var username = ""; //it will if typed the username of the player
 
@@ -20,15 +20,14 @@ var textTimer;
 
 function setup(){    //setup function from p5.js
 	createCanvas(1300,600);
-	socket = io.connect('http://192.168.1.5:3000');
+	socket = io.connect('http://192.168.1.9:3000');
 	socketListener();
 	username = sID;
 	s = new Snake();
 	noCursor();
 }
 
-function draw (){
-	reciver();
+function draw (){	
 	noStroke();    //draw loop p5.js
 	background(72);
 	if (s.life > 0){
@@ -37,12 +36,7 @@ function draw (){
 		deadScreen();
 	}
 }
-function reciver(){
 
-	textSize(32);
-	text("hola" , 250, 0);
-
-}
 function mousePressed(){  // *TRIGGERD* when mouse pressed
 	if(s.life>0){
 		shots.push(new Shot(s.x,s.y,mouseX,mouseY,false,sID,username));
